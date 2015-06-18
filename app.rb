@@ -8,6 +8,14 @@ require_relative 'config/application'
 
 Dir['app/**/*.rb'].each { |file| require_relative file }
 
+# 4.2 Setup the Database
+# The rake db:setup task will create the database, load the schema and
+# initialize it with the seed data.
+#
+# 4.3 Resetting the Database
+# The rake db:reset task will drop the database and set it up again. This is
+# functionally equivalent to rake db:drop db:setup.
+
 helpers do
   def current_user
     user_id = session[:user_id]
@@ -55,8 +63,8 @@ get '/meetup/:id' do
   # Extra challenge: view membership of meetup
   session[:meetup_id] = params[:id]
 
-  this_membership = Membership.find_by(meetup: this_meetup)
-  binding.pry
+  this_membership = Membership.where(meetup: this_meetup).find_each
+  # binding.pry
   erb :show, locals: { this_meetup: this_meetup, this_membership: this_membership }
 end
 

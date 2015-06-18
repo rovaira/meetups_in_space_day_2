@@ -5,5 +5,7 @@ class CreateMeetups < ActiveRecord::Migration
       t.string :description, null: false
       t.string :location, null: false
     end
+
+    add_index :meetups, :name, unique: true
   end
 end

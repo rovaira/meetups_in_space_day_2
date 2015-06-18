@@ -4,8 +4,8 @@
 
 <h3> Attendees: </h3>
 <ul>
-  <% this_membership.each do |attendee| %>
-  <li><%= attendee.user_id %></li>
+  <% this_membership.each do |member| %>
+  <li><%= member.user.username %> <img src="<%= member.user.avatar_url %>"></li>
   <% end %>
 </ul>
 
@@ -13,6 +13,3 @@
 <form action="/meetup/:id" method="post">
   <button type="submit" name="join" value="join"><div id="join_meetup">Join Meetup</div></button>
 </form>
-
-<!-- post user to 'membership' table -->
-<!-- alert message saying successful sign up -->
