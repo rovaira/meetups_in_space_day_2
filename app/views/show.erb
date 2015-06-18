@@ -1,0 +1,18 @@
+<h1> <%= this_meetup.name %> </h1>
+<h3> Description: <%= this_meetup.description %> </h3>
+<h3> Location: <%= this_meetup.location %> </h3>
+
+<h3> Attendees: </h3>
+<ul>
+  <% this_membership.each do |attendee| %>
+  <li><%= attendee.user_id %></li>
+  <% end %>
+</ul>
+
+<a href = '/'> Home </a>
+<form action="/meetup/:id" method="post">
+  <button type="submit" name="join" value="join"><div id="join_meetup">Join Meetup</div></button>
+</form>
+
+<!-- post user to 'membership' table -->
+<!-- alert message saying successful sign up -->
